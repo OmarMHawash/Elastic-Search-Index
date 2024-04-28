@@ -1,0 +1,79 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "autocomplete": {
+          "tokenizer": "autocomplete",
+          "filter": ["lowercase", "stop", "porter_stem"],
+          "char_filter": ["html_strip"]
+        }
+      },
+      "tokenizer": {
+        "autocomplete": {
+          "type": "edge_ngram",
+          "min_gram": 3,
+          "max_gram": 10,
+          "token_chars": ["letter"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "id": {
+        "type": "text"
+      },
+      "title": {
+        "type": "text",
+        "analyzer": "autocomplete",
+        "search_analyzer": "standard"
+      },
+      "date": {
+        "type": "date",
+        "format": "dd-MMM-yyyy HH:mm:ss"
+      },
+      "author": {
+        "type": "nested",
+        "properties": {
+          "first_name": {
+            "type": "text"
+          },
+          "last_name": {
+            "type": "text"
+          }
+        }
+      },
+      "geopoint": {
+        "type": "geo_point"
+      },
+      "geo_references": {
+        "type": "nested",
+        "properties": {
+          "name": {
+            "type": "keyword"
+          },
+          "geo_name": {
+            "type": "text"
+          },
+          "geopoint": {
+            "type": "geo_point"
+          }
+        }
+      },
+      "temporal_expressions": {
+        "type": "nested",
+        "properties": {
+          "text": {
+            "type": "text"
+          }
+        }
+      },
+      "content": {
+        "type": "text"
+      },
+      "people": {
+        "type": "keyword"
+      }
+    }
+  }
+}
