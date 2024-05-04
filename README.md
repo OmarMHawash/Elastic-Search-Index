@@ -1,5 +1,16 @@
 # Elastic_Search_Index
- building an index and search engine using elastic search
+
+building an index and search engine using elastic search
+
+## Overview
+
+![overview](docs/es-index-system.png)
+
+## Avaliable Queries
+
+- fuzzy document search (by content with geo-location & reference date)
+- get top most referenced location
+- get document distribution over time
 
 ## Used Packages
 
